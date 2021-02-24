@@ -10,18 +10,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-server:
-			make -C Server
-			make -C Client
-			mv Server/serverV1 ./
-			mv Client/clientV1 ./
+CLIENT_NAME = clientV1
+CLIENT_SRC = main.cpp Client.cpp
+CLIENT_0SRC = $(CLIENT_SRC:.cpp=.o)
+
+FLAGS =		clang++ -Wall -Wextra -Werror
+
+all:		$(CLIENT_NAME)
+
+$(CLIENT_NAME):	$(CLIENT_0SRC)
+			$(FLAGS) $(CLIENT_0SRC) -o $(CLIENT_NAME)
+
+%.o:		%.cpp
+			$(FLAGS) -c $< -o $@
 
 clean:
-			make -C Server clean
-			rm -rf  *.o
+			rm -rf  $(CLIENT_0SRC)
 
 fclean:		clean
-			rm -rf serverV1 clientV1 a.out
+			rm -rf $(CLIENT_NAME)
+
+re:			fclean all
 
 s:
 			wc *.cpp *.h *.hpp
