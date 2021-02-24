@@ -4,5 +4,5 @@ project(webserv)
 set(CMAKE_CXX_STANDARD 98)
 
 add_executable(webserv
-        webserv.cpp
+        Server/webserv.cpp
         )
