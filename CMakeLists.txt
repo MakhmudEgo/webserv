@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 98)
 
 add_executable(webserv
         Server/webserv.cpp
-        Webserv.cpp
-        Webserv.hpp
         Client/Client.cpp
         Client/Client.hpp
         Client/main.cpp
