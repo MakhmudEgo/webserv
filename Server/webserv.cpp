@@ -2,12 +2,7 @@
 // Created by Mahmud Jego on 2/22/21.
 //
 
-#include <iostream>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sstream>
+#include "includes.h"
 
 int main()
 {
@@ -22,6 +17,8 @@ int main()
 	sockaddr.sin_family = AF_INET; // ipV4
 	sockaddr.sin_port = htons(8000); // htons is necessary to convert a number to // порт
 	sockaddr.sin_addr.s_addr = inet_addr("127.0.0.1"); // htonl(INADDR_ANY);
+	int opt = 1;
+	setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 	// network byte order
 	if (bind(sockfd, (struct sockaddr *) &sockaddr, sizeof(sockaddr)) < 0)
 	{

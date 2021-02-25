@@ -4,14 +4,18 @@ project(webserv)
 set(CMAKE_CXX_STANDARD 98)
 #set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 
+include_directories(includes)
+
 add_executable(webserv
         Server/webserv.cpp
         Client/Client.cpp
-        Client/Client.hpp
-        Client/main.cpp
+        Server/Server.cpp
+#        Client/Client.hpp
+#        Client/main.cpp
+        Request/Request.cpp
         )
 
 add_executable(Client
         Client/main.cpp
         Client/Client.cpp
-        )
+        main.cpp includes/defines.h)
