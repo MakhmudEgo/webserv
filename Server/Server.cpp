@@ -4,8 +4,10 @@
 
 #include "Server.hpp"
 
-Server::Server(char **av) {
-	std::cout << "config file poka chto otsutstvuet" << std::endl;
+Server::Server(char *config)
+{
+	std::cout << "parser config" << std::endl;
+
 }
 
 Server::Server(const std::string &ip, int port)
@@ -53,7 +55,7 @@ void Server::receive(int fd)
 		exit(EXIT_FAILURE);
 	}
 	if (ret < 2048)
-		
+
 	std::cout << this->_buffer << std::endl;
 }
 

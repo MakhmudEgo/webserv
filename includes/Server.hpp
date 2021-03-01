@@ -9,7 +9,7 @@
 
 class Server {
 public:
-	Server(char **av);
+	Server(char *);
 	Server(const std::string& ip, int port);
 	int getSocket();
 

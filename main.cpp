@@ -7,6 +7,7 @@ volatile bool loop = true;
 
 int main(int ac, char **av)
 {
+	Server serverTestParser(av[1]);
 	Server server("127.0.0.1", 8000);
 	int max_d = server.getSocket();
 
