@@ -7,8 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <regex>
-//#include <sstream>
-//#include <ostream>
+#include <sstream>
+#include <ostream>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <netinet/in.h>

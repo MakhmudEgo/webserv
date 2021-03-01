@@ -9,9 +9,14 @@
 
 class Parser {
 public:
-	Parser(char*);
+	Parser(const char*);
 private:
-	std::vector<t_server> servers;
+	std::vector<t_server*> servers;
+	std::stack<char> stack;
+	const char *_config;
+
+	void parsLine(const std::string& line);
+	void parsConfig();
 };
 
 

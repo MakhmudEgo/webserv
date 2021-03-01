@@ -3,23 +3,54 @@
 //
 
 #include "Parser.hpp"
-#include <ostream>
-Parser::Parser(char *config)
+#include <istream>
+Parser::Parser(const char *config) : _config(config)
+{
+	this->parsConfig();
+}
+
+void Parser::parsConfig()
 {
 	std::string line;
-	std::ifstream Config(config);
-	if (!Config)
+	std::ifstream file(this->_config);
+	if (!file)
 	{
-		std::cout << "error: not open " << config << std::endl;
+		std::cerr << "error: not open" << this->_config << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	std::stringstream hello;
 
-	while (std::getline(Config, line))
+	while (std::getline(file, line))
 	{
-		hello << line;
-		std::cout << hello.str() << std::endl;
+		if (line[0] == '#')
+		{
+			continue ;
+		}
+		this->parsLine(line);
+//		if (!file.eof())
+//		{
+//			ss << std::endl;
+//		}
 	}
-//	 std::getline(Config, line);
-//	std::cout << line << std::endl;
+//	std::cout << ss.str();
+}
+
+void Parser::parsLine(const std::string& line)
+{
+	std::string item;
+	std::stringstream ss;
+	ss << line;
+
+	while (ss >> item)
+	{
+		if (item == "server" && this->stack.empty())
+		{
+			t_server *server = new t_server;
+			this->servers.push_back(server);
+		}
+		else if (item == "server")
+		{
+			std::cerr << "error: pars" << std::endl;
+			exit(EXIT_FAILURE);
+		}
+	}
 }

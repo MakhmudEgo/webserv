@@ -7,4 +7,6 @@
 int main(int ac, char **av)
 {
 	Parser parser(av[1]);
+//	Parser parser("rdgfdsfg");
+
 }
