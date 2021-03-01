@@ -11,10 +11,12 @@
 # **************************************************************************** #
 
 SERVER_NAME = serverV1
-SERVER_SRC = webserv.cpp
+#SERVER_SRC = webserv.cpp
+SERVER_SRC = Server.cpp
 SERVER_0SRC = $(SERVER_SRC:.cpp=.o)
+INCLUDES = includes
 
-FLAGS =		clang++ -Wall -Wextra -Werror
+FLAGS =		clang++ -I$(INCLUDES) -Wall -Wextra -Werror
 
 all:		$(SERVER_NAME)
 
@@ -22,7 +24,7 @@ $(SERVER_NAME):	$(SERVER_0SRC)
 			$(FLAGS) $(SERVER_0SRC) -o $(SERVER_NAME)
 
 %.o:		%.cpp
-			$(FLAGS) -c $< -o $@
+			$(FLAGS) -I$(INCLUDES) -c $< -o $@
 
 clean:
 			rm -rf  $(SERVER_0SRC)
